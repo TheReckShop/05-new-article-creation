@@ -76,12 +76,11 @@ articleView.initNewArticlePage = function() {
   $('#export-field').hide();
   $('#article-json').on('focus', function(){
     this.select();
-    //.on IS THE jQUERY EVENT LISTENER 'focus' is the type of even listener!!!!
+    //.on IS THE jQUERY EVENT LISTENER 'focus' is the type of event listener!!!!
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
   $('some element').on('change' function(){
-
   //update the preview
   //update the export field
   });
