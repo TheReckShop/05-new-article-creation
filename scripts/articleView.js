@@ -87,13 +87,13 @@ articleView.create = function() {
   // DONE!: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   var article;
-  $('#articles').empty();
+  $('#article-preview').empty();
 
   // DONE!: Instantiate an article based on what's in the form fields:
   //use $newArticle constructor
   article = new Article({
   //The curly brackets inside of Article's parens is an OBJECT LITERAL
-      author: $('#article-author'.val(),
+      author: $('#article-author').val(),
       authorUrl: $('#article-author-url').val(),
       title: $('#article-title').val(),
       category: $('#article-category').val(),
@@ -112,11 +112,12 @@ articleView.create = function() {
 
   // DONE!: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#export-field').show();
-  $('#article-json').val(JSON.stringify(article)) + ',');
+  $('#article-json').val(JSON.stringify(article)) + ',';
 };
 
 
 articleView.initIndexPage = function() {
+  articleView.preventRawDataProblem();
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
