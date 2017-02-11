@@ -80,30 +80,39 @@ articleView.initNewArticlePage = function() {
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('some element').on('change' function(){
-  //update the preview
-  //update the export field
-  });
+  $('#new-form').on('change', articleView.create);
 };
 
 articleView.create = function() {
-  // TODO: Set up a var to hold the new article we are creating.
+  // DONE!: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
+  var article;
+  $('#articles').empty();
 
-
-  // TODO: Instantiate an article based on what's in the form fields:
+  // DONE!: Instantiate an article based on what's in the form fields:
   //use $newArticle constructor
-
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
-
-  // TODO: Activate the highlighting of any code blocks:
-  $('pre code').each(function(i, block) {
-
+  article = new Article({
+  //The curly brackets inside of Article's parens is an OBJECT LITERAL
+      author: $('#article-author'.val(),
+      authorUrl: $('#article-author-url').val(),
+      title: $('#article-title').val(),
+      category: $('#article-category').val(),
+      body: $('#article-body').val(),
+      publishedOn: $('#article-published:checked').length ? new Date() : null
   });
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  // DONE!: Use our interface to the Handblebars template to put this new article into the DOM:
+  $('#articles').append(article.toHtml());
 
+  // DONE!: Activate the highlighting of any code blocks:
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+  //refer to highlightjs.org
+
+  // DONE!: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#export-field').show();
+  $('#article-json').val(JSON.stringify(article)) + ',');
 };
 
 
