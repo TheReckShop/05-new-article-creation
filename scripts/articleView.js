@@ -102,7 +102,7 @@ articleView.create = function() {
   });
 
   // DONE!: Use our interface to the Handblebars template to put this new article into the DOM:
-  $('#articles').append(article.toHtml());
+  $('#article-preview').append(article.toHtml());
 
   // DONE!: Activate the highlighting of any code blocks:
   $('pre code').each(function(i, block) {
